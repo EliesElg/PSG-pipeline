@@ -1,0 +1,20 @@
+# Fichiers de configuration secrets
+.env
+.env.*
+
+# Données (Trop lourdes pour GitHub, et générées par le code)
+data/
+logs/
+
+# Cache Python et fichiers compilés
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints
+
+# Docker
+.docker/
+
+# Système
+.DS_Store
+Thumbs.db
