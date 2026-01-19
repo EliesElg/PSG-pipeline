@@ -7,12 +7,7 @@ import boto3
 import botocore
 from datetime import datetime
 
-S3_client = boto3.client(
-    's3',
-    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
-    region_name=os.getenv("AWS_REGION")
-)
+
 
 # 1. Load environment variables (to keep your API key safe)
 load_dotenv()
@@ -33,10 +28,17 @@ headers = {
     "X-Auth-Token": API_KEY
 }
 
-def extract_data():
+def extract_data(date_dag):
     print(f"Fetching data for PSG (Team ID: {TEAM_ID})...")
 
-    date_today = datetime.today().strftime('%Y-%m-%d')
+    S3_client = boto3.client(
+    's3',
+    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
+    region_name=os.getenv("AWS_REGION")
+    )
+    date_executed = date_dag
+    # date_today = datetime.today().strftime('%Y-%m-%d')
 
     try:
         # 3. Make the HTTP Request
@@ -65,9 +67,10 @@ def extract_data():
     try:
 
         print(data)
+
         S3_client.put_object(
             Bucket=os.getenv("BUCKET_NAME"),
-            Key=f"psg_matches_{date_today}.json",
+            Key=f"psg_matches_{date_executed}.json",
             Body=json.dumps(data)
         )
         print("Data successfully uploaded to S3 bucket.")

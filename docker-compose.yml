@@ -38,10 +38,15 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_REGION=${AWS_REGION}
       - BUCKET_NAME=${BUCKET_NAME}
+      - GOOGLE_APPLICATION_CREDENTIALS=/opt/airflow/secrets/google_key.json
+      - GOOGLE_DATASET=${GOOGLE_DATASET}
+      - GOOGLE_TABLE=${GOOGLE_TABLE}
+      - GOOGLE_PROJECT=${GOOGLE_PROJECT}
     volumes:
       - ./dags:/opt/airflow/dags
       - ./data:/opt/airflow/data
       - ./src:/opt/airflow/src
+      - ./secrets:/opt/airflow/secrets:ro
 
   airflow-scheduler:
     build: .
@@ -60,10 +65,15 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_REGION=${AWS_REGION}
       - BUCKET_NAME=${BUCKET_NAME}
+      - GOOGLE_APPLICATION_CREDENTIALS=/opt/airflow/secrets/google_key.json
+      - GOOGLE_DATASET=${GOOGLE_DATASET}
+      - GOOGLE_TABLE=${GOOGLE_TABLE}
+      - GOOGLE_PROJECT=${GOOGLE_PROJECT}
     volumes:
       - ./dags:/opt/airflow/dags
       - ./data:/opt/airflow/data
       - ./src:/opt/airflow/src
+      - ./secrets:/opt/airflow/secrets:ro
 
   airflow-init:
     build: .

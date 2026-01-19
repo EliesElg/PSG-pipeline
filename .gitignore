@@ -5,6 +5,7 @@
 # Données (Trop lourdes pour GitHub, et générées par le code)
 data/
 logs/
+secrets/
 
 # Cache Python et fichiers compilés
 __pycache__/
