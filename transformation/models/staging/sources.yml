@@ -1,0 +1,6 @@
+sources:
+  - name: psg_raw # Le nom qu'on utilisera dans DBT
+    database: psg-data-484718 # <--- REMPLACE PAR TON ID PROJET EXACT
+    schema: raw_data # Ton dataset BigQuery actuel
+    tables:
+      - name: PSG_MATCHES # Ta table brute actuelle
