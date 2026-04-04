@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_psg_matches
+    description: "Table de staging nettoyée pour les matchs du PSG"
+    columns:
+      - name: match_id
+        description: "L'identifiant unique du match depuis l'API"
+        tests:
+          - unique
+          - not_null
+      - name: adversaire_final
+        description: "Nom de l'équipe adverse"
+        tests:
+          - not_null

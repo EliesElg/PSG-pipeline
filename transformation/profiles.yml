@@ -1,0 +1,10 @@
+transformation:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: "psg-data-484718"
+      dataset: "psg_dbt"
+      threads: 1
+      keyfile: "/opt/airflow/secrets/google_key.json"

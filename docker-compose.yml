@@ -47,6 +47,8 @@ services:
       - ./data:/opt/airflow/data
       - ./src:/opt/airflow/src
       - ./secrets:/opt/airflow/secrets:ro
+      - ./transformation:/opt/airflow/transformation
+      - ./logs:/opt/airflow/logs
 
   airflow-scheduler:
     build: .
@@ -74,6 +76,8 @@ services:
       - ./data:/opt/airflow/data
       - ./src:/opt/airflow/src
       - ./secrets:/opt/airflow/secrets:ro
+      - ./transformation:/opt/airflow/transformation
+      - ./logs:/opt/airflow/logs
 
   airflow-init:
     build: .

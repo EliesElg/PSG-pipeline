@@ -33,6 +33,7 @@ match_prepare AS (
 
 score_calculs AS (
     SELECT 
+        match_id,
         ingestion_date,
         ROW_NUMBER() OVER (PARTITION BY match_id ORDER BY ingestion_date DESC ) as row_num,
         match_date,
@@ -70,6 +71,7 @@ score_calculs AS (
 )
 
 SELECT
+    match_id,
     ingestion_date,
     match_date,
     competition,
